@@ -7,7 +7,7 @@ import sys
 import httplib
  
 total_args = len(sys.argv)
-if total_args != 2:
+if total_args != 4:
     print "\n"
     print "Usage: ./%s <destination host> <destination port> <file.csv>" %sys.argv[0]
     print "    destination host/port  : Web server virtual IP and port to test"
@@ -23,7 +23,12 @@ with open('ip-port.csv') as ip_port_csvfile:
         IP_SRC=row[0]
         PORT_SRC=int(row[1])
         print "Sending request from ( %s , %s )" %(IP_SRC,PORT_SRC)
-	conn = httplib.HTTPConnection(host=IP_DST, port=PORT_DST, source_address=(IP_SRC,PORT_SRC),timeout=2)
-	conn.request("GET", "/")
-	res = conn.getresponse()
-	#print res.status, res.reason
+        try:
+	  conn = httplib.HTTPConnection(host=IP_DST, port=PORT_DST, source_address=(IP_SRC,PORT_SRC),timeout=2)
+	  conn.request("GET", "/")
+	  res = conn.getresponse()
+	  #print res.status, res.reason
+        
+        except:
+          print "Unexpected error:", sys.exc_info()[0]      
+

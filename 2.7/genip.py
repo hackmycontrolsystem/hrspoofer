@@ -8,7 +8,6 @@ import random
 import sys
  
 total_args = len(sys.argv)
-print total_args
 
 if total_args != 4:
     print "\n"
@@ -29,4 +28,5 @@ with open(sys.argv[3], 'w') as ip_port_file:
         srcip=ip
         sock=[srcip,srcport]
 	csv_data.writerow(sock)
-	print 'ip addr add %s dev %s' %(sys.argv[1],sys.argv[2])
+	print 'ip addr add %s dev %s' %(ip,sys.argv[2])
+
