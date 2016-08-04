@@ -69,4 +69,16 @@ RUN set -ex \
 # install "virtualenv", since the vast majority of users of this image will want it
 RUN pip install --no-cache-dir virtualenv
 
-CMD ["python2"]
+# Additions
+ADD genip.py /genip.py
+ADD hrspoofer.py /hrspoofer.py
+RUN apt-get update && apt-get -y install vim nano
+
+RUN chmod +x *.py
+RUN git clone https://github.com/google/ipaddr-py
+WORKDIR ipaddr-py
+RUN python setup.py install
+WORKDIR / 
+RUN rm -R ipaddr-py
+
+#CMD ["python2"]
