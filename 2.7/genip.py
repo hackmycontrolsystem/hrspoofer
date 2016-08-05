@@ -8,6 +8,7 @@ import random
 import sys
  
 total_args = len(sys.argv)
+print total_args
 
 if total_args != 4:
     print "\n"
@@ -19,14 +20,14 @@ if total_args != 4:
 
 
 print "#!/usr/bin/python"
-
+subn=IPNetwork(sys.argv[1])
+netmask=subn.prefixlen
 with open(sys.argv[3], 'w') as ip_port_file:
-
     csv_data = csv.writer(ip_port_file, delimiter=',')
-    for ip in IPNetwork(sys.argv[1]):
+    for ip in subn:
         srcport=random.randrange(32768,61000)
         srcip=ip
         sock=[srcip,srcport]
 	csv_data.writerow(sock)
-	print 'ip addr add %s dev %s' %(ip,sys.argv[2])
+	print 'ip addr add %s/%s dev %s' %(ip,netmask,sys.argv[2])
 
