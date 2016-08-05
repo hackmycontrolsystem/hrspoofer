@@ -5,6 +5,7 @@ __author__ = "AJN (ajn.bin@gmail.com): cciethebeginning.wordpress.com"
 import csv
 import sys
 import httplib
+import re
  
 total_args = len(sys.argv)
 if total_args != 5:
@@ -24,14 +25,16 @@ with open(CSV_FILE) as ip_port_csvfile:
     for row in reader:
         IP_SRC=row[0]
         PORT_SRC=int(row[1])
-        print "Sending request from ( %s , %s )" %(IP_SRC,PORT_SRC)
+        print "Sending request from ( %s , %s )" %(IP_SRC,PORT_SRC),
         try:
 	  conn = httplib.HTTPConnection(host=IP_DST, port=PORT_DST, source_address=(IP_SRC,PORT_SRC),timeout=2)
 	  conn.request("GET", PAGE)
 	  res = conn.getresponse()
-	  print res.status, res.reason
+	  print " [%s] " %res.status,
           data = res.read()
-          print data
+          serverline=re.search('Server ip(.*)', data, re.M|re.I)
+          print " ==> Request loadbalanced to %s" %serverline.group()
           conn.close()        
         except:
           print "Unexpected error:", sys.exc_info()[0]
+
