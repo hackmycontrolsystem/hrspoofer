@@ -18,7 +18,7 @@ if total_args != 5:
 IP_DST=sys.argv[1]
 PORT_DST=sys.argv[2]
 CSV_FILE=sys.argv[4]
-PAGE=sys.argv[3]
+PAGE="/"+sys.argv[3]
 with open(CSV_FILE) as ip_port_csvfile:
     reader = csv.reader(ip_port_csvfile, delimiter=',')
     for row in reader:
@@ -30,7 +30,8 @@ with open(CSV_FILE) as ip_port_csvfile:
 	  conn.request("GET", PAGE)
 	  res = conn.getresponse()
 	  print res.status, res.reason
-        
+          data = res.read()
+          print data
+          conn.close()        
         except:
-          print "Unexpected error:", sys.exc_info()[0]   
-
+          print "Unexpected error:", sys.exc_info()[0]
