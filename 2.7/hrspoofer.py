@@ -13,7 +13,7 @@ if total_args != 5:
     print "Usage: ./%s <destination host> <destination port> <requested_page> <file.csv>" %sys.argv[0]
     print "    destination host/port  : Web server virtual IP and port to test"
     print "    requested page         : Keep empty if default index pages"
-    print "    <file.csv>   : obtained using the script >>  gen_temp_ip.py << \n"
+    print "    <file.csv>   : obtained using the script >>  genip.py << \n"
     sys.exit(1)
 
 IP_DST=sys.argv[1]
