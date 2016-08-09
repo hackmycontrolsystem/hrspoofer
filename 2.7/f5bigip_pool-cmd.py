@@ -1,9 +1,8 @@
 #!/usr/bin/python
 
-from ipaddr import *
-
 print "create ltm pool dind_nginx members add { ",
-for ip in IPNetwork('10.10.0.0/26'):
-   print "%s:80 " %ip,
+for octet in range(2,52):
+
+   print "172.18.0.%s:80 " %octet,
 
 print " } monitor http"
