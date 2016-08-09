@@ -21,7 +21,7 @@ into a shell script to be executed to configure the secondary addresses.
 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output_file.csv   : The resulting file containing ip,port.  
 
 Example:  
-python genip.py 10.10.0.0/26 eth0 ip_port.csv > setip.sh
+> python genip.py 10.10.0.0/26 eth0 ip_port.csv > setip.sh
 
 **2- Assign the IP's as secondary addresses**  
 > bash setip.sh
@@ -36,5 +36,5 @@ python genip.py 10.10.0.0/26 eth0 ip_port.csv > setip.sh
 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\<file.csv\>           : obtained using the script \>\>  genip.py \<\<   
 
 Example:
-> ./hrspoofer.py 192.168.18.100 80 test.php ip_port.csv 
+> python hrspoofer.py 192.168.18.100 80 test.php ip_port.csv 
 
