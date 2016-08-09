@@ -11,7 +11,7 @@ The script genip.py  generates a csv file with the pairs of ip addresses from th
 
 > ./genip.py   
 >  
->  Usage: ./genip.py <X.X.X.X/mask> <output_int> <output_file.csv>  
+>  Usage: ./genip.py \<X.X.X.X/mask\> \<output_int\> \<output_file.csv\>  
 >     X.X.X.X/mask      : the subnet from which you want to generate the ip addresses.  
 >         output_int        : the egress interface receiving the generated secondary addresses.  
 >         output_file.csv   : The resulting file containing ip,port.  
@@ -26,7 +26,7 @@ python genip.py 10.10.0.0/26 eth0 ip_port.csv > setip.sh
 **3- Generate http requests from there list of secondary addresses**
 > ./hrspoofer.py   
 >    
-> Usage: ./hrspoofer.py <destination host> <destination port> <requested_page> <file.csv>  
+> Usage: ./hrspoofer.py \<destination host\> \<destination port\> \<requested_page\> \<file.csv\>  
 >     destination host/port  : Web server virtual IP and port to test  
 >     requested page         : Keep empty if default index pages  
 >     <file.csv>   : obtained using the script >>  gen_temp_ip.py <<   
