@@ -5,7 +5,11 @@ This is a container based on [docker-library/python2.7](https://github.com/docke
 The main python script hrspoofer.py (http request spoofer), uses httplib to generate http requests with spoofed source ip address to simulate different client.  
 The list of spoofed source IPs are simply secondary ip addresses assigned to the main container interface.
 
-The script genip.py  generates a csv file with the pairs of ip addresses from the subnet of your choice and a random port from the ephemeral source port range (32768-61000). The script also generates the corresponding manual commands "ip address add <X.X.X.X/X> dev <int>" into a shell script to be executed to configure the secondary addersses.
+The script genip.py  generates a csv file with the pairs of ip addresses from the subnet of your choice and a random port from the ephemeral source port range (32768-61000). The script also generates the corresponding manual commands  
+
+> ip address add \<X.X.X.X/X\> dev \<int\>
+
+into a shell script to be executed to configure the secondary addresses.
 
 **1- Generate the spoofed source IPs**
 
