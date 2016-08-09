@@ -20,7 +20,7 @@ into a shell script to be executed to configure the secondary addresses.
 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output_int        : the egress interface receiving the generated secondary addresses.  
 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output_file.csv   : The resulting file containing ip,port.  
 
-Example:
+Example:  
 python genip.py 10.10.0.0/26 eth0 ip_port.csv > setip.sh
 
 **2- Assign the IP's as secondary addresses**  
